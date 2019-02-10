@@ -29,12 +29,54 @@
     <div class="demo-container">
       <video id="video" width="320" height="240" preload autoplay loop muted></video>
       <canvas id="canvas" width="320" height="240"></canvas>
+
+      <div style="text-align: center">
+        <button class="button" onclick="none()">Off</button>
+        <button class="button" onclick="filter1()">Filter1</button>
+        <button class="button" onclick="filter2()">Filter2</button>
+        <button class="button" onclick="filter3()">Filter3</button>
+
+        <style type="text/css">
+          .button {
+            background-color: black;
+            cursor: pointer;
+            align: center;
+            position: relative;
+            top: 50px;
+            width: 100px;
+            height: 40px;
+            color: #fff;
+            border: none;
+            font-size: 100%;
+          }
+
+          .button:focus {
+            border: 2px solid blue;
+          }
+        </style>
+      </div>
     </div>
   </div>
 
   <script>
     var img = document.createElement("img");
-    img.src = 'images/Aviator.png';
+    img.src = '';
+
+    function none(){
+      img.src = ''
+    }
+
+    function filter1(){
+      img.src = 'images/Aviator.png'
+    }
+
+    function filter2(){
+      img.src = 'images/Wayfarer.png'
+    }
+
+    function filter3(){
+      img.src = 'images/Ingram.png'
+    }
 
     window.onload = function() {
       var video = document.getElementById('video');
@@ -42,9 +84,9 @@
       var context = canvas.getContext('2d');
 
       var tracker = new tracking.ObjectTracker(['eye', 'mouth']);
-      tracker.setInitialScale(1);
-      tracker.setStepSize(2.7);
-      tracker.setEdgesDensity(0.2);
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
 
       tracking.track('#video', tracker, { camera: true });
 
@@ -53,6 +95,8 @@
 
         event.data.forEach(function(rect) {
           context.drawImage(img, rect.x, rect.y, rect.width, rect.height)      
+
+          //context.drawImage(img, rect.y / 4, rect.width + 11, rect.height * 1.5)
         });
       });
 
