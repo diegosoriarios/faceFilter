@@ -13,49 +13,38 @@
   <script src="tracking.js-master/examples/assets/stats.min.js"></script>
 
   <style>
-  video, canvas {
-    margin-left: 230px;
-    margin-top: 120px;
-    position: absolute;
-  }
+    video, canvas {
+      margin-left: 230px;
+      margin-top: 120px;
+      position: absolute;
+    }
+    .button {
+      background-color: black;
+      cursor: pointer;
+      align: center;
+      position: relative;
+      top: 50px;
+      width: 100px;
+      height: 40px;
+      color: #fff;
+      border: none;
+      font-size: 100%;
+    }
+
+    .button:focus {
+      border: 2px solid blue;
+    }
   </style>
 </head>
 <body>
-  <div class="demo-title">
-    <p><a href="http://trackingjs.com" target="_parent">tracking.js</a> － get user's webcam and detect faces</p>
-  </div>
+  <video id="video" width="320" height="240" preload autoplay loop muted></video>
+  <canvas id="canvas" width="320" height="240"></canvas>
 
-  <div class="demo-frame">
-    <div class="demo-container">
-      <video id="video" width="320" height="240" preload autoplay loop muted></video>
-      <canvas id="canvas" width="320" height="240"></canvas>
-
-      <div style="text-align: center">
-        <button class="button" onclick="none()">Off</button>
-        <button class="button" onclick="filter1()">Filter1</button>
-        <button class="button" onclick="filter2()">Filter2</button>
-        <button class="button" onclick="filter3()">Filter3</button>
-
-        <style type="text/css">
-          .button {
-            background-color: black;
-            cursor: pointer;
-            align: center;
-            position: relative;
-            top: 50px;
-            width: 100px;
-            height: 40px;
-            color: #fff;
-            border: none;
-            font-size: 100%;
-          }
-
-          .button:focus {
-            border: 2px solid blue;
-          }
-        </style>
-      </div>
-    </div>
+  <div style="text-align: center">
+    <button class="button" onclick="none()">Off</button>
+    <button class="button" onclick="filter1()">Filter1</button>
+    <button class="button" onclick="filter2()">Filter2</button>
+    <button class="button" onclick="filter3()">Filter3</button>
   </div>
 
   <script>
