@@ -45,11 +45,14 @@
     <button class="button" onclick="filter1()">Filter1</button>
     <button class="button" onclick="filter2()">Filter2</button>
     <button class="button" onclick="filter3()">Filter3</button>
+    <button class="button" onclick="filter4()">Filter4</button>
   </div>
 
   <script>
     var img = document.createElement("img");
     img.src = '';
+
+    var tracker = new tracking.ObjectTracker('face');
 
     function none(){
       img.src = ''
@@ -57,25 +60,36 @@
 
     function filter1(){
       img.src = 'images/Aviator.png'
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
     }
 
     function filter2(){
       img.src = 'images/Wayfarer.png'
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
     }
 
     function filter3(){
       img.src = 'images/Ingram.png'
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
+    }
+
+    function filter4(){
+      img.src = 'images/nick.png'
+      tracker.setInitialScale(5);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
     }
 
     window.onload = function() {
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
-
-      var tracker = new tracking.ObjectTracker('face');
-      tracker.setInitialScale(4);
-      tracker.setStepSize(2);
-      tracker.setEdgesDensity(0.1);
 
       tracking.track('#video', tracker, { camera: true });
 
